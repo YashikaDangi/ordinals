@@ -13,9 +13,10 @@ interface UserPayload {
   avtar?: string;
 }
 
-connect();
+
 export async function POST(request: NextRequest) {
   try {
+    connect();
     const body: UserPayload = await request.json();
     vine.errorReporter = () => new ErrorReporter();
     const validator = vine.compile(registerSchema);
@@ -54,3 +55,4 @@ export async function POST(request: NextRequest) {
     }
   }
 }
+export const dynamic = 'force-dynamic';

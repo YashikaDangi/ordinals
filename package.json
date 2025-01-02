@@ -29,6 +29,7 @@
     "bitcoin-wallet-adapter": "^1.8.2",
     "crypto-random-string": "^5.0.0",
     "cryptr": "^6.3.0",
+    "encoding": "^0.1.13",
     "lucide-react": "^0.469.0",
     "mongodb": "^5.7.0",
     "mongoose": "^7.3.4",
