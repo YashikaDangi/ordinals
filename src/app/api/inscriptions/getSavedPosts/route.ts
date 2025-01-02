@@ -1,7 +1,6 @@
 import connect from "@/database/mongo.config";
-import { auth } from "@/database/auth";
 import SavedItem from "@/models/SavedItem";
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "../../auth/[...nextauth]/options";
 
@@ -12,9 +11,9 @@ export async function GET(request: NextRequest) {
         if (!session || !session.user) {
           return new Response("Unauthorized", { status: 401 });
         }
-      if (!session?.user) {
-        return new Response("Unauthorized", { status: 401 });
-      }
+        if (!session?.user?._id) { // Check specifically for user ID
+          return new Response("Unauthorized - User ID required", { status: 401 });
+        }
   
       await connect();
   
@@ -30,12 +29,11 @@ export async function GET(request: NextRequest) {
       });
     } catch (error) {
       console.error("Error fetching saved items:", error);
-      return new Response(
-        JSON.stringify({ success: false, error: "error.message " }),
-        {
-          status: 500,
-        }
+      return new NextResponse(
+        JSON.stringify({ success: false, error: "error" }), // Use actual error message
+        { status: 500 }
       );
     }
   }
   
+  export const dynamic = 'force-dynamic';

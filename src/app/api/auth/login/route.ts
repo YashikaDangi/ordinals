@@ -5,7 +5,6 @@ import ErrorReporter from "@/validator/ErrorReporter";
 import { loginSchema } from "@/validator/authValidationSchema";
 import { User } from "@/models/User";
 import bcrypt from "bcryptjs";
-import { signIn } from "next-auth/react";
 
 // * Connect to the DB
 connect();

@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import axios from "axios";
 import { signIn } from "next-auth/react";
-import Image from "next/image";
 import Toast from "@/components/Toast";
 import WalletButton from "@/components/Wallet/WalletButton";
 
@@ -51,21 +50,6 @@ export default function SignInOne() {
       });
   };
 
-  // * Github signin
-  const githubSignIn = async () => {
-    await signIn("github", {
-      callbackUrl: "/",
-      redirect: true,
-    });
-  };
-
-  // * Google login
-  const googleLogin = async () => {
-    await signIn("google", {
-      callbackUrl: "/",
-      redirect: true,
-    });
-  };
 
   return (
     <section>

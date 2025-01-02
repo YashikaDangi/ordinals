@@ -42,13 +42,6 @@ export default function SignUp() {
   };
 
 
-  // * Google login
-  const googleLogin = async () => {
-    await signIn("google", {
-      callbackUrl: "/",
-      redirect: true,
-    });
-  };
 
   return (
     <section>
