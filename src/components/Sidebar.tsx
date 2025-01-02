@@ -56,7 +56,7 @@ const Sidebar = ({ onSearch }: SidebarProps) => {
   };
 
   const handleHomeClick = () => {
-    router.push("/dashboard");
+    router.push("/");
   };
 
   const handleSavedPostsClick = () => {
