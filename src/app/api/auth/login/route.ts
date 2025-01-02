@@ -4,7 +4,7 @@ import bcrypt from "bcryptjs";
 import vine, { errors } from "@vinejs/vine";
 import { NextRequest, NextResponse } from "next/server";
 import { loginSchema } from "@/validator/authValidationSchema";
-import ErrorReporter from "@/validator/ErrorReporter";
+// import ErrorReporter from "@/validator/ErrorReporter";
 
 export async function POST(request: NextRequest) {
   try {
@@ -45,12 +45,12 @@ export async function POST(request: NextRequest) {
     );
   } catch (error) {
     console.error("Error Occurred:", error);
-    if (error instanceof errors.E_VALIDATION_ERROR) {
-      return NextResponse.json(
-        { status: 400, errors: error.messages },
-        { status: 200 }
-      );
-    }
+    // if (error instanceof errors.E_VALIDATION_ERROR) {
+    //   return NextResponse.json(
+    //     { status: 400, errors: error.messages },
+    //     { status: 200 }
+    //   );
+    // }
     return NextResponse.json(
       { status: 500, errors: { message: "Internal Server Error" } },
       { status: 500 }
