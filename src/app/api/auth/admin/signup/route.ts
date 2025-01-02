@@ -19,3 +19,5 @@ export async function POST(request: NextRequest) {
     message: "Admin created successfully",
   });
 }
+
+export const dynamic = 'force-dynamic';

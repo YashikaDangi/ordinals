@@ -38,3 +38,5 @@ export async function POST(request: NextRequest) {
     message: "Password changed successfully. please login with new password.",
   });
 }
+
+export const dynamic = 'force-dynamic';
