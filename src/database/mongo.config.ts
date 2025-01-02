@@ -28,7 +28,6 @@ async function connect(): Promise<Mongoose> {
   }
   if (!cached.promise) {
     const opts = {
-      bufferCommands: false,
       useNewUrlParser: true,
       useUnifiedTopology: true,
     };
