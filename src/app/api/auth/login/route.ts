@@ -11,11 +11,16 @@ export async function POST(request: NextRequest) {
     // Ensure database connection
     await connect();
 
+    // const body = await request.json();
+    // vine.errorReporter = () => new ErrorReporter();
+    // const validator = vine.compile(loginSchema);
+    // const output = await validator.validate(body);
+
     const body = await request.json();
-    vine.errorReporter = () => new ErrorReporter();
+    console.log("Request body received:", body);
     const validator = vine.compile(loginSchema);
     const output = await validator.validate(body);
-
+    console.log("Validation passed:", output);
     const user = await User.findOne({ email: output.email });
     if (user) {
       const checkPassword = bcrypt.compareSync(output.password!, user.password);
@@ -32,7 +37,10 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json(
-      { status: 400, errors: { email: "No User found in our system with above email." } },
+      {
+        status: 400,
+        errors: { email: "No User found in our system with above email." },
+      },
       { status: 200 }
     );
   } catch (error) {
@@ -50,4 +58,4 @@ export async function POST(request: NextRequest) {
   }
 }
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
