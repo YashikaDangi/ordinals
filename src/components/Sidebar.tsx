@@ -2,6 +2,7 @@
 import { useRouter } from "next/navigation";
 import { useState, useRef, useEffect } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
+import { CiBookmark, CiHome, CiSearch } from "react-icons/ci";
 
 interface SidebarProps {
   onSearch: (query: string) => void;
@@ -24,7 +25,7 @@ const Sidebar = ({ onSearch }: SidebarProps) => {
     if (!searchQuery) return;
 
     // Notify parent component about the search query
-    onSearch(searchQuery); 
+    onSearch(searchQuery);
 
     setIsSearching(false); // Optionally close the search input
 
@@ -72,50 +73,41 @@ const Sidebar = ({ onSearch }: SidebarProps) => {
   }, []);
 
   return (
-    <div ref={sidebarRef} className="bg-black p-6 w-64">
-      <div className="mb-8"></div>
+    <div ref={sidebarRef} className="p-6 w-64 h-full">
+      <div className="mt-4 mb-6">
+        <div className="flex items-center mb-4 space-x-2 ">
+          <input
+            ref={searchInputRef}
+            type="text"
+            value={searchQuery}
+            onChange={handleSearchChange}
+            placeholder="Inscription number"
+            className="w-full p-1 rounded-3xl bg-white text-gray-900 placeholder-gray-400"
+          />
+          <button
+            onClick={handleSearchSubmit}
+            className="bg-black text-white p-1 transition duration-300 flex items-center justify-center"
+          >
+            <CiSearch className="w-5 h-5" />
+          </button>
+        </div>
+      </div>
+
       <button
         onClick={handleHomeClick}
-        className="w-full bg-gray-800 text-white p-2 rounded-lg mb-4"
+        className="w-full bg-white text-gray-900 p-1 rounded-lg mb-4 flex items-center justify-start gap-3 hover:bg-gray-200 transition duration-300"
       >
-        Home
+        <CiHome className="w-5 h-5 text-gray-900" />
+        <span className="font-medium">Home</span>
       </button>
+
       <button
         onClick={handleSavedPostsClick}
-        className="w-full bg-gray-800 text-white p-2 rounded-lg mb-4"
+        className="w-full bg-white text-gray-900 p-1 rounded-lg mb-4 flex items-center justify-start gap-3 hover:bg-gray-200 transition duration-300"
       >
-        Saved Posts
+        <CiBookmark className="w-5 h-5 text-gray-900" />
+        <span className="font-medium">Save</span>
       </button>
-
-      <div className="mt-2">
-        {isSearching ? (
-          <div className="flex items-center">
-            <input
-              ref={searchInputRef}
-              type="text"
-              value={searchQuery}
-              onChange={handleSearchChange}
-              placeholder="Search by inscription number"
-              className="w-full p-2 rounded-l-3xl bg-black text-white placeholder-gray-400"
-            />
-
-            <button
-              onClick={handleSearchSubmit}
-              className=" bg-black text-white rounded-r-3xl"
-            >
-              <AiOutlineSearch />
-            </button>
-          </div>
-        ) : (
-          <button
-            onClick={() => setIsSearching(true)}
-            className="w-full bg-gray-800 text-white p-2 rounded-lg mb-4 flex items-center justify-center"
-          >
-            <AiOutlineSearch className="mr-2" />
-            Search
-          </button>
-        )}
-      </div>
     </div>
   );
 };

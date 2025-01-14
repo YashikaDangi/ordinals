@@ -53,6 +53,7 @@ export default function AdminLogin() {
           </div>
           <div className="mt-5">
             <button
+            onClick={handleSubmit}
               type="submit"
               className="w-full bg-red-400 rounded-lg p-2 text-white"
             >

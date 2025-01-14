@@ -4,7 +4,7 @@ import bcrypt from "bcryptjs";
 import vine, { errors } from "@vinejs/vine";
 import { NextRequest, NextResponse } from "next/server";
 import { loginSchema } from "@/validator/authValidationSchema";
-// import ErrorReporter from "@/validator/ErrorReporter";
+import ErrorReporter from "@/validator/ErrorReporter";
 
 export async function POST(request: NextRequest) {
   try {

@@ -212,11 +212,11 @@ const DashboardView = () => {
   
   return (
     <div className="flex h-screen">
-      <div className="fixed top-0 left-0 w-64 bg-black h-full mt-10">
+      <div className="fixed top-0 left-0 w-64 h-full mt-10">
         <Sidebar onSearch={handleSearch} />
       </div>
 
-      <main className="ml-64 flex-1 min-h-screen bg-black text-white overflow-y-auto  ">
+      <main className="ml-64 flex-1 min-h-screen  text-white overflow-y-auto ">
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6 p-4 ">
           {data.length > 0 ? (
             data.map((item) => {

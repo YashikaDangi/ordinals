@@ -15,7 +15,7 @@ export async function middleware(request: NextRequest) {
   const userProtectedRoutes = ["/"];
 
   // * Protected routes for admin
-  const adminProtectedRoutes = ["/admin/dashboard","/saved-posts"];
+  const adminProtectedRoutes = ["/admin/dashboard"];
 
   if (
     token == null &&

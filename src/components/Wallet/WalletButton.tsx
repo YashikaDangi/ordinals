@@ -74,14 +74,21 @@ const WalletButton = () => {
   return (
     <div className="mt-2">
       <ConnectMultiButton
-        walletImageClass="w-[60px]"
-        walletLabelClass="pl-3 font-bold text-xl ml-2"
-        walletItemClass="border w-full md:w-6/12 cursor-pointer border-transparent rounded-xl mb-4 hover:border-green-500 transition-all"
-        headingClass="text-white text-4xl pb-12 font-bold text-center"
-        buttonClassname="bg-purple-600 rounded-lg flex items-center text-white px-4 py-1 mb-4 font-bold"
-        InnerMenu={InnerMenu}
-        // balance={10000}
-      />
+          modalContentClass="bg-primary border rounded-xl border-[#c96336] overflow-hidden relative lg:p-16 md:p-12 p-6"
+          buttonClassname={`text-white [text-wrap:nowrap] text-sm font-bold rounded flex items-center px-4 h-[40px] py-1 ${
+            walletDetails
+              ? '  font-bold bg-[#5e2208] '
+              : ' font-light bg-[#c96336]'
+          }`}
+          headingClass="text-center text-white pt-2 pb-2 text-3xl capitalize font-bold mb-4"
+          walletItemClass="w-full bg-[#5e2208] my-3 hover:border-[#c96336] border border-transparent cursor-pointer"
+          walletLabelClass="text-lg text-white capitalize tracking-wider"
+          walletImageClass="w-[30px]"
+          //@ts-ignore
+          InnerMenu={InnerMenu}
+          iconClass="w-auto pb-8"
+          // balance={balanceData?.balance}
+        />
     </div>
   );
 };

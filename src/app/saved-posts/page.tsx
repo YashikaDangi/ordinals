@@ -7,6 +7,7 @@ import { useSession } from "next-auth/react";
 const SavedPosts = () => {
   const [savedItems, setSavedItems] = useState<CollectionItem[]>([]);
   const { data: session } = useSession();
+  console.log(session)
 
   useEffect(() => {
     const fetchSavedItems = async () => {
