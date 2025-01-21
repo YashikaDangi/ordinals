@@ -5,66 +5,77 @@ import {
 import SignoutButton from "@/components/signoutButton";
 import DashboardView from "@/views/DashboardView";
 import { getServerSession } from "next-auth";
+import Image from "next/image";
+import { UserCircle, LogOut } from "lucide-react";
+import { Metadata } from "next";
 
-import React from "react";
+export const metadata: Metadata = {
+  title: "Dashboard | Ordinsta",
+  description:
+    "Manage your Ordinsta platform, view analytics, and control platform settings.",
+};
 
 export default async function AdminDashboard() {
   const session: CustomSession | null = await getServerSession(authOptions);
 
-
   return (
-    <div>
+    <div className="min-h-screen bg-[#0A0A0A]">
       {/* Header */}
-      <div className="bg-black flex justify-between items-center px-4 py-4 shadow-lg">
-        {/* Left section */}
-        <div className="flex items-center gap-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="white"
-            viewBox="0 0 24 24"
-            className="w-6 h-6"
-          >
-            <path d="M12 0C5.4 0 0 5.4 0 12c0 5.2 3.2 9.6 7.8 11.2.6.2.8-.2.8-.6V20.3c-3.2.6-3.8-1.4-3.8-1.4-.6-1.4-1.2-1.8-1.2-1.8-1-.8.2-.8.2-.8 1.2.2 1.8 1.2 1.8 1.2 1 .2 2.4.2 3.4.2.2-.8.6-1.2 1-1.4-2.4-.4-4.8-1.2-4.8-5.2 0-1 .4-2 1-2.6-.2-.4-.4-1-.4-2 0-1.6 1.2-2.8 2.8-2.8.6 0 1.2.2 1.8.4.6-.2 1.4-.6 2.2-.6.8 0 1.6.4 2.2.6.6-.2 1.2-.4 1.8-.4 1.6 0 2.8 1.2 2.8 2.8 0 1-.2 1.6-.4 2 .6.8 1 1.8 1 2.6 0 4-2.4 4.8-4.8 5.2.8.6 1.2 1.6 1.2 3v4.4c0 .4.2.8.8.6 4.6-1.6 7.8-6 7.8-11.2 0-6.6-5.4-12-12-12z" />
-          </svg>
-          <h1 className="text-white text-2xl font-serif">Explore</h1>
-        </div>
+      <header className="bg-[#111111] border-b border-[#1F1F1F] sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex justify-between items-center px-4 py-3">
+            {/* Logo and Brand */}
+            <div className="flex items-center space-x-3">
+              <div className="relative h-10 w-10">
+                <Image
+                  src="/logo.png"
+                  alt="Ordinsta Logo"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+              <h1 className="text-[#F0F0F0] text-xl md:text-2xl font-serif tracking-wide">
+                Ordinsta
+              </h1>
+            </div>
 
-        {/* Center section */}
-        {/* <div className="flex gap-4">
-          <div className="flex items-center bg-white text-black px-4 py-2 rounded-full">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              className="w-4 h-4"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M10 21v-6m0 0v-4a2 2 0 012-2h0a2 2 0 012 2v4m-4 0h4"
-              />
-            </svg>
-            <button className="ml-2">
-              Home
-            </button>
+            {/* User Profile and Actions */}
+            <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-3">
+                <div className="p-2 rounded-full bg-[#1F1F1F] group hover:bg-[#2A2A2A] transition-colors duration-200">
+                  <UserCircle className="h-6 w-6 text-[#9D5CFF] group-hover:text-[#B685FF] transition-colors duration-200" />
+                </div>
+                <div className="hidden md:block">
+                  <p className="text-sm font-medium text-[#F0F0F0]">
+                    {session?.user?.name || "Administrator"}
+                  </p>
+                  <p className="text-xs text-[#808080]">
+                    {session?.user?.email}
+                  </p>
+                </div>
+              </div>
+              <div className="h-8 w-px bg-[#1F1F1F]" />
+              <SignoutButton
+                type="Admin"
+                className="flex items-center space-x-2 px-4 py-2 
+                          bg-[#1F1F1F] hover:bg-red-500/10
+                          text-red-500 rounded-lg transition-all 
+                          duration-200 text-sm font-medium
+                          border border-red-500/20 hover:border-red-500/30"
+              >
+                <LogOut className="h-4 w-4" />
+                <span>Logout</span>
+              </SignoutButton>
+            </div>
           </div>
-        </div> */}
-
-        {/* Right section */}
-        <div className="flex items-center gap-4">
-          <h1 className="text-sm font-bold text-white">
-            {session && session.user?.name}
-          </h1>
-          <SignoutButton type="Admin" />
         </div>
-      </div>
+      </header>
 
-      {/* DashboardView */}
-      <div className="mt-4 px-4">
+      {/* Main Content */}
+      <main className="max-w-7xl mx-auto px-4 py-6">
         <DashboardView />
-      </div>
+      </main>
     </div>
   );
 }

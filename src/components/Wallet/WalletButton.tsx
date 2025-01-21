@@ -74,19 +74,20 @@ const WalletButton = () => {
   return (
     <div className="mt-2">
       <ConnectMultiButton
-          modalContentClass="bg-primary border rounded-xl border-[#c96336] overflow-hidden relative lg:p-16 md:p-12 p-6"
+          modalContentClass="bg-primary border rounded-xl border-purple-800 overflow-hidden relative lg:p-16 md:p-12 p-6"
           buttonClassname={`text-white [text-wrap:nowrap] text-sm font-bold rounded flex items-center px-4 h-[40px] py-1 ${
             walletDetails
-              ? '  font-bold bg-[#5e2208] '
-              : ' font-light bg-[#c96336]'
+              ? '  font-bold bg-purple-800 '
+              : ' font-light bg-purple-600'
           }`}
           headingClass="text-center text-white pt-2 pb-2 text-3xl capitalize font-bold mb-4"
-          walletItemClass="w-full bg-[#5e2208] my-3 hover:border-[#c96336] border border-transparent cursor-pointer"
+          walletItemClass="w-full bg-pruple-700 my-3 hover:border-purple-800 border border-transparent cursor-pointer"
           walletLabelClass="text-lg text-white capitalize tracking-wider"
           walletImageClass="w-[30px]"
           //@ts-ignore
           InnerMenu={InnerMenu}
-          iconClass="w-auto pb-8"
+          icon="/logo_default.png"
+          iconClass="w-40 pb-8"
           // balance={balanceData?.balance}
         />
     </div>

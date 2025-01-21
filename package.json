@@ -30,6 +30,7 @@
     "crypto-random-string": "^5.0.0",
     "cryptr": "^6.3.0",
     "encoding": "^0.1.13",
+    "lodash": "^4.17.21",
     "lucide-react": "^0.469.0",
     "mongodb": "^5.7.0",
     "mongoose": "^7.3.4",
@@ -51,6 +52,7 @@
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
+    "@types/lodash": "^4.17.14",
     "@types/nodemailer": "^6.4.11",
     "@types/react-modal": "^3.16.3"
   }
