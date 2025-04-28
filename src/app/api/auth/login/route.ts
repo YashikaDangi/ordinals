@@ -4,18 +4,11 @@ import bcrypt from "bcryptjs";
 import vine, { errors } from "@vinejs/vine";
 import { NextRequest, NextResponse } from "next/server";
 import { loginSchema } from "@/validator/authValidationSchema";
-import ErrorReporter from "@/validator/ErrorReporter";
 
 export async function POST(request: NextRequest) {
   try {
     // Ensure database connection
     await connect();
-
-    // const body = await request.json();
-    // vine.errorReporter = () => new ErrorReporter();
-    // const validator = vine.compile(loginSchema);
-    // const output = await validator.validate(body);
-
     const body = await request.json();
     console.log("Request body received:", body);
     const validator = vine.compile(loginSchema);
